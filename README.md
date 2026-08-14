@@ -31,6 +31,3 @@ GLOW AR is a premium, real-time virtual beauty mirror and skin diagnostic applic
 - **Database**: SQLite3 (processed with Knex/Queries).
 
 
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your web browser to test the virtual mirror.
