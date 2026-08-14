@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLOW AR | AI & AR Beauty Atelier</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Library for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- Background Decor Elements -->
+    <div class="decor-circle circle-1"></div>
+    <div class="decor-circle circle-2"></div>
+    
+    <!-- ================= SIGNUP / AUTH SCREEN ================= -->
+    <section id="auth-screen" class="auth-screen">
+        <div class="auth-card">
+            <!-- Left Side: Editorial Branding -->
+            <div class="auth-visual">
+                <div class="visual-overlay"></div>
+                <div class="visual-content">
+                    <span class="visual-label">GLOW AR</span>
+                    <h2 class="visual-heading">Discover Your Virtual Mirror</h2>
+                    <p class="visual-tagline">Step into the future of luxury beauty. Real-time AR try-on, personalized skin analysis, and bespoke cosmetics tailored dynamically for you.</p>
+                    <div class="visual-features">
+                        <div class="v-feat"><i class="fa-solid fa-camera-rotate"></i> <span>Live AR Dressing</span></div>
+                        <div class="v-feat"><i class="fa-solid fa-wand-magic-sparkles"></i> <span>AI Skin Diagnostics</span></div>
+                        <div class="v-feat"><i class="fa-solid fa-certificate"></i> <span>Premium Clean Formulations</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side: Interaction Form -->
+            <div class="auth-form-container">
+                <!-- Sign Up Form Wrapper -->
+                <div id="signup-form-wrapper">
+                    <div class="auth-header">
+                        <h1>Create Account</h1>
+                        <p>Enter your details to begin your virtual beauty consultation</p>
+                    </div>
+                    
+                    <form id="signup-form" class="auth-form" novalidate>
+                        <!-- Name Input -->
+                        <div class="input-group">
+                            <input type="text" id="signup-name" required placeholder=" ">
+                            <label for="signup-name">Full Name</label>
+                            <i class="fa-regular fa-user input-icon"></i>
+                            <span class="error-msg">Name is required</span>
+                        </div>
+                        
+                        <!-- Email Input -->
+                        <div class="input-group">
+                            <input type="email" id="signup-email" required placeholder=" ">
+                            <label for="signup-email">Email Address</label>
+                            <i class="fa-regular fa-envelope input-icon"></i>
+                            <span class="error-msg">Please enter a valid email</span>
+                        </div>
+                        
+                        <!-- Password Input -->
+                        <div class="input-group">
+                            <input type="password" id="signup-password" required minlength="6" placeholder=" ">
+                            <label for="signup-password">Password</label>
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <span class="password-toggle" id="toggle-pwd"><i class="fa-regular fa-eye"></i></span>
+                            <span class="error-msg">Password must be at least 6 characters</span>
+                        </div>
+                        
+                        <!-- Password Strength Meter -->
+                        <div class="strength-meter">
+                            <div class="strength-bar" id="strength-bar"></div>
+                            <span class="strength-text" id="strength-text">Password strength</span>
+                        </div>
+                        
+                        <!-- Consent Checkboxes -->
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="terms-agree" required>
+                            <label for="terms-agree">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-shimmer" id="signup-submit">
+                            <span>Begin Journey</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="#" id="to-login">Sign In</a></p>
+                    </div>
+                </div>
+
+                <!-- Sign In / Log In Form Wrapper -->
+                <div id="login-form-wrapper" class="hidden">
+                    <div class="auth-header">
+                        <h1>Welcome Back</h1>
+                        <p>Sign in to open your digital beauty portfolio</p>
+                    </div>
+                    
+                    <form id="login-form" class="auth-form" novalidate>
+                        <!-- Email Input -->
+                        <div class="input-group">
+                            <input type="email" id="login-email" required placeholder=" ">
+                            <label for="login-email">Email Address</label>
+                            <i class="fa-regular fa-envelope input-icon"></i>
+                            <span class="error-msg">Please enter a valid email</span>
+                        </div>
+                        
+                        <!-- Password Input -->
+                        <div class="input-group">
+                            <input type="password" id="login-password" required placeholder=" ">
+                            <label for="login-password">Password</label>
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <span class="password-toggle" id="toggle-login-pwd"><i class="fa-regular fa-eye"></i></span>
+                            <span class="error-msg">Password is required</span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-shimmer" id="login-submit">
+                            <span>Sign In</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Don't have an account? <a href="#" id="to-signup">Create One</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MAIN APP / HOME SCREEN ================= -->
+    <section id="app-screen" class="app-screen hidden">
+        <!-- Site Navigation -->
+        <header class="main-header">
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" title="Open Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="header-logo">
+                <span class="logo-text">GLOW AR</span>
+                <span class="logo-subtext">ATELIER</span>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="#tryon-anchor" class="nav-link active" id="nav-tryon">Try-On Studio</a>
+                <a href="#products-anchor" class="nav-link" id="nav-products">Product Atelier</a>
+                <a href="#skin-anchor" class="nav-link" id="nav-skin">Skin Diagnostics</a>
+                <a href="#orders-anchor" class="nav-link" id="nav-orders">Order Portfolio</a>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="cart-badge" id="cart-btn">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                    
+                    <!-- Floating Cart Dropdown -->
+                    <div class="cart-dropdown" id="cart-dropdown">
+                        <div class="cart-title">Your Shopping Bag (<span id="cart-dropdown-count">0</span>)</div>
+                        <div class="cart-items" id="cart-items-list">
+                            <div class="cart-empty-text">Your bag is empty.</div>
+                        </div>
+                        <div class="cart-summary">
+                            <span>Subtotal:</span>
+                            <span class="cart-subtotal-val">$0.00</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm btn-block" id="checkout-btn">Checkout</button>
+                    </div>
+                </div>
+                
+                <div class="user-profile-badge">
+                    <div class="avatar" id="user-avatar-lbl">S</div>
+                    <div class="user-info">
+                        <span class="user-name" id="user-name-lbl">Guest User</span>
+                        <span class="user-tier">Luxury Member</span>
+                    </div>
+                    <button id="logout-btn" title="Sign Out"><i class="fa-solid fa-right-from-bracket"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Splash Hero section -->
+        <section class="app-hero">
+            <h1 class="hero-title">Virtual Try-On & Skin Diagnostics</h1>
+            <p class="hero-desc">Experience premium cosmetics overlaid in real-time. Upload your photo, connect your webcam, or choose a model preset to find your perfect shades instantly.</p>
+        </section>
+
+        <!-- Main Workspace: Camera display + Makeup controls -->
+        <div class="studio-workspace" id="tryon-anchor">
+            
+            <!-- LEFT PANEL: AR Viewer Canvas & Media Controls -->
+            <div class="viewfinder-card">
+                <div class="card-header-tabs">
+                    <button class="cam-tab active" data-tab="preset"><i class="fa-solid fa-user-tie"></i> Presets</button>
+                    <button class="cam-tab" data-tab="upload"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Image</button>
+                    <button class="cam-tab" data-tab="camera"><i class="fa-solid fa-camera"></i> Live Camera</button>
+                </div>
+                
+                <div class="viewer-body">
+                    <!-- Preset Selection Overlay (Visible only in preset tab) -->
+                    <div id="presets-panel" class="tab-panel active">
+                        <div class="presets-grid">
+                            <div class="preset-item active" data-index="0" data-img="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80" alt="Preset Model 1">
+                                <span>Aria (Light)</span>
+                            </div>
+                            <div class="preset-item" data-index="1" data-img="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&h=150&q=80" alt="Preset Model 2">
+                                <span>Chloe (Fair)</span>
+                            </div>
+                            <div class="preset-item" data-index="2" data-img="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80">
+                                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=150&h=150&q=80" alt="Preset Model 3">
+                                <span>Kavya (Warm)</span>
+                            </div>
+                            <div class="preset-item" data-index="3" data-img="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80">
+                                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=150&h=150&q=80" alt="Preset Model 4">
+                                <span>Zuri (Deep)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Upload Panel -->
+                    <div id="upload-panel" class="tab-panel">
+                        <div class="drag-upload-zone" id="drop-zone">
+                            <i class="fa-solid fa-images upload-art"></i>
+                            <p class="drop-text">Drag and drop your selfie here</p>
+                            <span>Support PNG, JPG up to 10MB</span>
+                            <button class="btn btn-secondary btn-sm" id="upload-trigger-btn">Browse Files</button>
+                            <input type="file" id="file-input" accept="image/*" class="hidden">
+                        </div>
+                    </div>
+                    
+                    <!-- Custom Camera Panel -->
+                    <div id="camera-panel" class="tab-panel">
+                        <div class="camera-stream-wrapper">
+                            <video id="webcam-feed" autoplay playsinline></video>
+                            <div class="camera-guide">
+                                <div class="guide-oval"></div>
+                                <p>Position your face in the oval</p>
+                            </div>
+                            <div class="camera-error hidden" id="camera-error">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                <p>Webcam blocked or unavailable. Please upload a photo instead.</p>
+                            </div>
+                            <div class="camera-controls">
+                                <button class="btn btn-primary" id="btn-capture"><i class="fa-solid fa-camera"></i> Capture Selfie</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CANVAS ENGINE INNER -->
+                    <div class="canvas-viewport" id="canvas-viewport">
+                        <div class="ai-status-tag" id="ai-status-tag">
+                            <span class="pulse-dot"></span>
+                            <span class="status-text">AI Face Tracking Active</span>
+                        </div>
+                        <div class="canvas-container" id="canvas-container">
+                            <!-- AR Canvas Rendering Base -->
+                            <canvas id="ar-canvas"></canvas>
+                            
+                            <!-- Calibration UI Overlays (visible when calibrate is on) -->
+                            <div class="calibration-overlay hidden" id="calibration-overlay">
+                                <!-- Draggable nodes markers -->
+                                <div class="cal-node" id="node-l-eye" data-name="Left Eye" title="Left Eye"><span class="node-label">L Eye</span></div>
+                                <div class="cal-node" id="node-r-eye" data-name="Right Eye" title="Right Eye"><span class="node-label">R Eye</span></div>
+                                <div class="cal-node" id="node-l-cheek" data-name="Left Cheek" title="Left Cheek"><span class="node-label">L Cheek</span></div>
+                                <div class="cal-node" id="node-r-cheek" data-name="Right Cheek" title="Right Cheek"><span class="node-label">R Cheek</span></div>
+                                <div class="cal-node animate-pulse" id="node-l-lips" data-name="Lips Left" title="Lips Left Corner"><span class="node-label">Lip L</span></div>
+                                <div class="cal-node animate-pulse" id="node-r-lips" data-name="Lips Right" title="Lips Right Corner"><span class="node-label">Lip R</span></div>
+                                <div class="cal-node animate-pulse" id="node-t-lips" data-name="Lips Top" title="Lips Center Top"><span class="node-label">Lip T</span></div>
+                                <div class="cal-node animate-pulse" id="node-b-lips" data-name="Lips Bottom" title="Lips Center Bottom"><span class="node-label">Lip B</span></div>
+                                
+                                <!-- Banner alert -->
+                                <div class="calibration-tip">
+                                    <i class="fa-solid fa-arrows-to-dot"></i> Drag coordinates to align makeup properly on your face.
+                                </div>
+                            </div>
+                            
+                            <!-- Before/After Split Line Slider -->
+                            <div class="split-slider-line" id="split-line">
+                                <div class="split-handle">
+                                    <i class="fa-solid fa-arrows-left-right"></i>
+                                </div>
+                            </div>
+                            
+                            <!-- Scanning Diagnostics Layer -->
+                            <div class="scanner-layer hidden" id="scanner-layer">
+                                <div class="laser-beam"></div>
+                                <div class="scanning-nodes">
+                                    <div class="scan-dot dot-1"></div>
+                                    <div class="scan-dot dot-2"></div>
+                                    <div class="scan-dot dot-3"></div>
+                                </div>
+                                <span class="scan-progress-lbl">Analyzing Skin Health...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Viewer Control Toolbar -->
+                <div class="viewer-actions-row">
+                    <button class="v-action-btn" id="btn-toggle-calibration" title="Calibrate Points">
+                        <i class="fa-solid fa-arrows-to-dot"></i> <span>Calibrate Face Map</span>
+                    </button>
+                    <button class="v-action-btn active" id="btn-toggle-compare" title="Toggle Split-Screen Compare">
+                        <i class="fa-solid fa-columns"></i> <span>Before / After Side Split</span>
+                    </button>
+                    <button class="btn btn-tertiary" id="btn-scan-skin">
+                        <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i> <span>AI Skin Diagnostics</span>
+                    </button>
+                    <button class="v-action-btn" id="btn-reset-filters" title="Reset all changes">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> <span>Clear Match</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- RIGHT PANEL: Makeup Selection Controls & Brand Integration -->
+            <div class="controls-card">
+                <div class="studio-heading">
+                    <h3>Makeup Customizer</h3>
+                    <p>Select formulas and shades to try them in real-time</p>
+                </div>
+                
+                <!-- Category Select Tabs -->
+                <div class="category-tabs">
+                    <button class="cat-btn active" data-cat="lips">
+                        <i class="fa-solid fa-lipstick"></i> Lips
+                    </button>
+                    <button class="cat-btn" data-cat="cheeks">
+                        <i class="fa-solid fa-face-smile"></i> Cheeks
+                    </button>
+                    <button class="cat-btn" data-cat="eyes">
+                        <i class="fa-solid fa-eye-low-vision"></i> Eyes
+                    </button>
+                </div>
+                
+                <!-- Products Adjustments Body -->
+                <div class="category-options-panel">
+                    
+                    <!-- LIPS TAB -->
+                    <div id="cat-lips-panel" class="cat-panel active">
+                        <div class="control-row">
+                            <label class="control-lbl">Lip Color Shade</label>
+                            <div class="color-palette" id="lips-palette">
+                                <div class="color-dot active" data-color="#e63946" data-name="Crimson Satin" style="background: radial-gradient(circle, #e63946 0%, #aa1c29 100%);"></div>
+                                <div class="color-dot" data-color="#d90429" data-name="Velvet Muse" style="background: radial-gradient(circle, #d90429 0%, #900a20 100%);"></div>
+                                <div class="color-dot" data-color="#ff758f" data-name="Blush Nude" style="background: radial-gradient(circle, #ff758f 0%, #d45b73 100%);"></div>
+                                <div class="color-dot" data-color="#c9184a" data-name="Petal Coral" style="background: radial-gradient(circle, #c9184a 0%, #9e0e36 100%);"></div>
+                                <div class="color-dot" data-color="#560bad" data-name="Mulberry Wine" style="background: radial-gradient(circle, #560bad 0%, #3a0077 100%);"></div>
+                                <div class="color-dot" data-color="#ff5400" data-name="Sunset Kiss" style="background: radial-gradient(circle, #ff5400 0%, #c43200 100%);"></div>
+                            </div>
+                            <span class="active-shade-name" id="lips-shade-lbl">Shade: Crimson Satin</span>
+                        </div>
+                        
+                        <div class="control-row">
+                            <label class="control-lbl">Lip Finish Type</label>
+                            <div class="glass-btn-group" id="lips-finish-group">
+                                <button class="finish-btn active" data-finish="matte">Matte</button>
+                                <button class="finish-btn" data-finish="glossy">Glossy</button>
+                                <button class="finish-btn" data-finish="metallic">Shimmer</button>
+                            </div>
+                        </div>
+                        
+                        <div class="control-row">
+                            <div class="slider-headers">
+                                <label class="control-lbl">Shade Opacity</label>
+                                <span class="val-gauge" id="lips-opacity-lbl">0%</span>
+                            </div>
+                            <input type="range" class="luxury-range" id="lips-opacity" min="0" max="100" value="0">
+                        </div>
+                        
+                        <div class="control-row">
+                            <div class="slider-headers">
+                                <label class="control-lbl">Lip Size (Plumpness)</label>
+                                <span class="val-gauge" id="lips-expand-lbl">0px</span>
+                            </div>
+                            <input type="range" class="luxury-range" id="lips-expand" min="-10" max="35" value="0">
+                        </div>
+                    </div>
+                    
+                    <!-- CHEEKS TAB -->
+                    <div id="cat-cheeks-panel" class="cat-panel">
+                        <div class="control-row">
+                            <label class="control-lbl">Blush Shade</label>
+                            <div class="color-palette" id="cheeks-palette">
+                                <div class="color-dot active" data-color="#ff87ab" data-name="Soft Tulip" style="background: radial-gradient(circle, #ff87ab 0%, #e05e83 100%);"></div>
+                                <div class="color-dot" data-color="#dda15e" data-name="Desert Sun" style="background: radial-gradient(circle, #dda15e 0%, #bc8040 100%);"></div>
+                                <div class="color-dot" data-color="#f08080" data-name="Warm Coral" style="background: radial-gradient(circle, #f08080 0%, #cd5c5c 100%);"></div>
+                                <div class="color-dot" data-color="#cdb4db" data-name="Lavender Mist" style="background: radial-gradient(circle, #cdb4db 0%, #b388eb 100%);"></div>
+                            </div>
+                            <span class="active-shade-name" id="cheeks-shade-lbl">Shade: Soft Tulip</span>
+                        </div>
+                        
+                        <div class="control-row">
+                            <div class="slider-headers">
+                                <label class="control-lbl">Blush Intensity</label>
+                                <span class="val-gauge" id="cheeks-opacity-lbl">0%</span>
+                            </div>
+                            <input type="range" class="luxury-range" id="cheeks-opacity" min="0" max="100" value="0">
+                        </div>
+                        
+                        <div class="control-row">
+                            <div class="slider-headers">
+                                <label class="control-lbl">Blush Coverage (Size)</label>
+                                <span class="val-gauge" id="cheeks-expand-lbl">35px</span>
+                            </div>
+                            <input type="range" class="luxury-range" id="cheeks-expand" min="15" max="75" value="35">
+                        </div>
+                    </div>
+                    
+                    <!-- EYES TAB -->
+                    <div id="cat-eyes-panel" class="cat-panel">
+                        <div class="control-row">
+                            <label class="control-lbl">Eyeshadow Color</label>
+                            <div class="color-palette" id="eyes-palette">
+                                <div class="color-dot active" data-color="#ffb703" data-name="Gold Dust" style="background: radial-gradient(circle, #ffb703 0%, #fb8500 100%);"></div>
+                                <div class="color-dot" data-color="#8338ec" data-name="Cosmopolitan Lavender" style="background: radial-gradient(circle, #8338ec 0%, #3a86c8 100%);"></div>
+                                <div class="color-dot" data-color="#fb5607" data-name="Copper Clay" style="background: radial-gradient(circle, #fb5607 0%, #d62246 100%);"></div>
+                                <div class="color-dot" data-color="#3d348b" data-name="Deep Smudge" style="background: radial-gradient(circle, #3d348b 0%, #2b1b54 100%);"></div>
+                                <div class="color-dot light-shade" data-color="#faf9f6" data-name="Pearl Shimmer" style="background: radial-gradient(circle, #faf9f6 0%, #e2dfd2 100%);" title="Pearl Shimmer"></div>
+                                <div class="color-dot light-shade" data-color="#f5ebdc" data-name="Champagne Frost" style="background: radial-gradient(circle, #f5ebdc 0%, #d6c0a0 100%);" title="Champagne Frost"></div>
+                                <div class="color-dot light-shade" data-color="#fcd5ce" data-name="Rose Quartz" style="background: radial-gradient(circle, #fcd5ce 0%, #e4948a 100%);" title="Rose Quartz"></div>
+                                <div class="color-dot light-shade" data-color="#e8e0ff" data-name="Lilac Haze" style="background: radial-gradient(circle, #e8e0ff 0%, #b8a2eb 100%);" title="Lilac Haze"></div>
+                                <div class="color-dot light-shade" data-color="#d8f3dc" data-name="Mint Glaze" style="background: radial-gradient(circle, #d8f3dc 0%, #95c4a7 100%);" title="Mint Glaze"></div>
+                            </div>
+                            <span class="active-shade-name" id="eyes-shade-lbl">Shade: Gold Dust</span>
+                        </div>
+                        
+                        <div class="control-row">
+                            <div class="slider-headers">
+                                <label class="control-lbl">Shadow Intensity</label>
+                                <span class="val-gauge" id="eyes-opacity-lbl">0%</span>
+                            </div>
+                            <input type="range" class="luxury-range" id="eyes-opacity" min="0" max="100" value="0">
+                        </div>
+                        
+                        <div class="control-row">
+                            <div class="slider-headers">
+                                <label class="control-lbl">Shadow Coverage (Size)</label>
+                                <span class="val-gauge" id="eyes-expand-lbl">25px</span>
+                            </div>
+                            <input type="range" class="luxury-range" id="eyes-expand" min="10" max="50" value="25">
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Quick Match Action Card -->
+                <div class="active-formula-card">
+                    <div class="card-inner-flex">
+                        <div class="formula-details">
+                            <span class="brand-tag">SUGGESTED COMBINATION</span>
+                            <h4 id="active-formula-title">Satin Muse Complex</h4>
+                            <p id="active-formula-desc">A deep hydration matte lip paired with a soft rose cheek blush.</p>
+                        </div>
+                        <div class="formula-price" id="active-formula-price">$62.00</div>
+                    </div>
+                    <button class="btn btn-primary btn-block btn-shimmer" id="add-combo-to-cart">
+                        <i class="fa-solid fa-cart-plus"></i> Add Combo to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI SKIN REPORT RESULTS BLOCK -->
+        <section id="skin-anchor" class="skin-diagnostics-section">
+            <div class="luxury-divider">
+                <span class="dec-line"></span>
+                <h2>AIRIS™ AI Skin Diagnostics</h2>
+                <span class="dec-line"></span>
+            </div>
+            
+            <p class="section-tagline">Real-time dermal analysis powered by advanced AI computer vision. Spot trends and track progress.</p>
+            
+            <div class="diagnostics-grid hidden-fade" id="skin-diagnostics-results-grid">
+                <!-- Overview Radial Charts CARD -->
+                <div class="diagnostic-card radial-stats">
+                    <h3>Overall Skin health Score</h3>
+                    <div class="circle-progress-container">
+                        <svg class="radial-svg" viewBox="0 0 100 100">
+                            <circle class="radial-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="radial-fg" id="health-score-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="56"></circle>
+                        </svg>
+                        <div class="radial-value-lbl">
+                            <span class="score-num" id="health-score-txt">84</span>
+                            <span class="score-denom">/100</span>
+                        </div>
+                    </div>
+                    <p class="score-recommendation">Your skin barrier is highly optimal, showing excellent cellular hydration with minor local sensitivity.</p>
+                </div>
+                
+                <!-- Detail Metrics card -->
+                <div class="diagnostic-card metrics-bars">
+                    <h3>Detailed Biomarker Ratings</h3>
+                    
+                    <div class="metric-row">
+                        <div class="metric-header">
+                            <span>Epidermal Hydration</span>
+                            <span class="metric-val" id="val-hydration">78%</span>
+                        </div>
+                        <div class="metric-bar-bg"><div class="metric-bar-fg" id="bar-hydration" style="width: 78%;"></div></div>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <div class="metric-header">
+                            <span>Tone Uniformity</span>
+                            <span class="metric-val" id="val-uniformity">85%</span>
+                        </div>
+                        <div class="metric-bar-bg"><div class="metric-bar-fg" id="bar-uniformity" style="width: 85%;"></div></div>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <div class="metric-header">
+                            <span>Sensitivity / Redness</span>
+                            <span class="metric-val" id="val-redness">14%</span>
+                        </div>
+                        <div class="metric-bar-bg"><div class="metric-bar-fg" id="bar-redness" style="width: 14%;"></div></div>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <div class="metric-header">
+                            <span>Dark Circle Index</span>
+                            <span class="metric-val" id="val-spots">22%</span>
+                        </div>
+                        <div class="metric-bar-bg"><div class="metric-bar-fg" id="bar-spots" style="width: 22%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagnostics History Log - Always Visible -->
+            <div class="skin-history-container">
+                <h3 class="history-title">Assessment Portfolio History</h3>
+                <div class="skin-history-list" id="skin-history-list">
+                    <p class="history-empty-text">No past assessments logged. Run your first AI scan above to initialize your skin tracking profile.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCT CATALOG SECTION -->
+        <section class="products-section" id="products-anchor">
+            <div class="luxury-divider">
+                <span class="dec-line"></span>
+                <h2>Atelier Luxury Catalog</h2>
+                <span class="dec-line"></span>
+            </div>
+            
+            <p class="section-tagline">Award-winning, dermatologist-tested clean formulas. Try them on the canvas above or add them to your luxury collection.</p>
+            
+            <div class="products-grid" id="catalog-products-grid">
+                <!-- Hardcoded product catalog showing beautiful details, prices, and try on button. JS will hook events. -->
+                
+                <!-- Product 1 -->
+                <div class="store-product-card" data-cat="lips" data-color="#e63946" data-opacity="70" data-finish="matte">
+                    <div class="product-img-holder">
+                        <span class="prod-badge">BESTSELLER</span>
+                        <div class="makeup-product-stick lipstick" style="background: linear-gradient(135deg, #e63946 0%, #b80c20 100%)"></div>
+                    </div>
+                    <div class="prod-details">
+                        <span class="prod-category">LIPS</span>
+                        <h3>Crimson Satin Lipstick</h3>
+                        <p class="prod-desc">Ultra-pigmented cushion matte, formulated with micro-dispersed seed oils and pure red botanical pigments.</p>
+                        <div class="prod-footer">
+                            <span class="prod-price">$34.00</span>
+                            <div class="prod-actions">
+                                <button class="btn btn-secondary btn-icon-lbl try-on-product-btn" title="Try on face model"><i class="fa-solid fa-camera"></i> Try On</button>
+                                <button class="btn btn-primary btn-icon add-to-cart-btn" data-id="p1" data-name="Crimson Satin Lipstick" data-price="34.00" title="Add to Bag"><i class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="store-product-card" data-cat="lips" data-color="#560bad" data-opacity="60" data-finish="glossy">
+                    <div class="product-img-holder">
+                        <div class="makeup-product-stick lipstick" style="background: linear-gradient(135deg, #560bad 0%, #320272 100%)"></div>
+                    </div>
+                    <div class="prod-details">
+                        <span class="prod-category">LIPS</span>
+                        <h3>Mulberry Wine Polish</h3>
+                        <p class="prod-desc">High-luster lip lacquer offering glass-like reflection with comfortable ceramide barrier protection.</p>
+                        <div class="prod-footer">
+                            <span class="prod-price">$36.00</span>
+                            <div class="prod-actions">
+                                <button class="btn btn-secondary btn-icon-lbl try-on-product-btn" title="Try on face model"><i class="fa-solid fa-camera"></i> Try On</button>
+                                <button class="btn btn-primary btn-icon add-to-cart-btn" data-id="p2" data-name="Mulberry Wine Polish" data-price="36.00" title="Add to Bag"><i class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="store-product-card" data-cat="cheeks" data-color="#ff87ab" data-opacity="40" data-finish="matte">
+                    <div class="product-img-holder">
+                        <div class="makeup-product-powder blush" style="background: radial-gradient(circle, #ff87ab 0%, #e05e83 100%)"></div>
+                    </div>
+                    <div class="prod-details">
+                        <span class="prod-category">CHEEKS</span>
+                        <h3>Atelier Soft Tulip Blush</h3>
+                        <p class="prod-desc">Cashmere cream-to-powder blush that diffuses skin pores and provides a soft candlelit rose glow.</p>
+                        <div class="prod-footer">
+                            <span class="prod-price">$28.00</span>
+                            <div class="prod-actions">
+                                <button class="btn btn-secondary btn-icon-lbl try-on-product-btn" title="Try on face model"><i class="fa-solid fa-camera"></i> Try On</button>
+                                <button class="btn btn-primary btn-icon add-to-cart-btn" data-id="p3" data-name="Soft Tulip Blush" data-price="28.00" title="Add to Bag"><i class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="store-product-card" data-cat="eyes" data-color="#ffb703" data-opacity="50" data-finish="shimmer">
+                    <div class="product-img-holder">
+                        <span class="prod-badge bg-gold">NEW RELEASE</span>
+                        <div class="makeup-product-powder eyeshadow" style="background: linear-gradient(135deg, #ffb703 0%, #fb8500 100%)"></div>
+                    </div>
+                    <div class="prod-details">
+                        <span class="prod-category">EYES</span>
+                        <h3>Gold Dust Celestial Shadow</h3>
+                        <p class="prod-desc">Fine-milled mineral powder that captures the light. Builds easily from a sheer shimmer to rich liquid gold.</p>
+                        <div class="prod-footer">
+                            <span class="prod-price">$32.00</span>
+                            <div class="prod-actions">
+                                <button class="btn btn-secondary btn-icon-lbl try-on-product-btn" title="Try on face model"><i class="fa-solid fa-camera"></i> Try On</button>
+                                <button class="btn btn-primary btn-icon add-to-cart-btn" data-id="p4" data-name="Gold Dust Celestial Shadow" data-price="32.00" title="Add to Bag"><i class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- USER ORDER HISTORY SECTION -->
+        <section id="orders-anchor" class="orders-section">
+            <div class="luxury-divider">
+                <span class="dec-line"></span>
+                <h2>Your Order Portfolio</h2>
+                <span class="dec-line"></span>
+            </div>
+            <p class="section-tagline">Track past order invoices and review purchased luxury products from your digital collection.</p>
+            
+            <div class="orders-container">
+                <div class="order-history-list" id="order-history-list">
+                    <p class="order-empty-text">No past orders found. Fill your shopping bag and execute checking out to verify.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="app-footer">
+            <div class="footer-brand">
+                <span class="footer-logo">GLOW AR</span>
+                <p>The Atelier of Luxury Digital Cosmetics</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <h4>Atelier Services</h4>
+                    <a href="#">VR Consultation</a>
+                    <a href="#">Custom Lip Balms</a>
+                    <a href="#">Subscription Lounges</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Assistance</h4>
+                    <a href="#">Luxury Concierge</a>
+                    <a href="#">Shipping & Returns</a>
+                    <a href="#">Dermatological Ethics</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GLOW AR Beauty Labs Inc. Crafted for ultra-immersive web experiences.</p>
+            </div>
+        </footer>
+    </section>
+
+    <!-- Mobile Nav Drawer Overlay -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <button class="close-drawer-btn" id="close-drawer-btn" title="Close menu"><i class="fa-solid fa-xmark"></i></button>
+        <div class="drawer-logo">
+            <span class="logo-text">GLOW AR</span>
+            <span class="logo-subtext">ATELIER</span>
+        </div>
+        <nav class="drawer-nav">
+            <a href="#tryon-anchor" class="drawer-link">Try-On Studio</a>
+            <a href="#products-anchor" class="drawer-link">Product Atelier</a>
+            <a href="#skin-anchor" class="drawer-link">Skin Diagnostics</a>
+            <a href="#orders-anchor" class="drawer-link">Order Portfolio</a>
+        </nav>
+        <div class="drawer-footer">
+            <p id="drawer-user-name">Guest User</p>
+            <p class="user-tier">Luxury Member</p>
+        </div>
+    </div>
+
+    <!-- Checkout Success Modal -->
+    <div class="modal-overlay hidden" id="checkout-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" id="close-checkout-modal" title="Dismiss modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <i class="fa-solid fa-circle-check success-icon"></i>
+                <h2>Purchase Completed</h2>
+                <p>Welcome to the GLOW AR Collection portfolio. Your order details have been securely logged.</p>
+            </div>
+            <div class="modal-body">
+                <div class="order-summary-box">
+                    <div class="summary-line">
+                        <span>Transaction ID:</span>
+                        <strong id="invoice-txn-id">GLW-000000</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Customer Email:</span>
+                        <span id="invoice-email">user@glowar.com</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Total Checkout:</span>
+                        <strong id="invoice-total">$0.00</strong>
+                    </div>
+                </div>
+                <div class="modal-items-title">Items Secured</div>
+                <div class="modal-products" id="invoice-products-list">
+                    <!-- Products ordered dynamic list -->
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block" id="btn-modal-done">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Luxury Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- TensorFlow.js Library for AI Dermal Model -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+    <!-- JavaScript logic file -->
+    <script src="app.js"></script>
+</body>
+</html>
