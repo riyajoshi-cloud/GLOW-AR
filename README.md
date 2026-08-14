@@ -30,27 +30,7 @@ GLOW AR is a premium, real-time virtual beauty mirror and skin diagnostic applic
 - **Backend Service**: Node.js, Express.
 - **Database**: SQLite3 (processed with Knex/Queries).
 
----
 
-## 🚀 Getting Started
-
-### 1. Installation
-Install project dependencies:
-```bash
-npm install
-```
-
-### 2. Configure Environment variables
-Create a `.env` file in the root folder:
-```env
-PORT=3000
-JWT_SECRET=your_luxury_glowar_secret_key
-```
-
-### 3. Launch Development Server
-Start the local server:
-```bash
-npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your web browser to test the virtual mirror.
