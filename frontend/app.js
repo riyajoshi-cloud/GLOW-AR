@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // State Management & Backend Config
     // ==========================================================================
-    const API_BASE = '/api';
+    const API_BASE = 'https://glow-ar.onrender.com/';
     let skinMLModel = null;
     let authToken = localStorage.getItem('glowar_token') || null;
     let userProfile = null;
